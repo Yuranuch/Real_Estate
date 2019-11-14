@@ -1,22 +1,22 @@
 import React from 'react';
 import './App.css';
+import Header from "./components/Header/Header";
+import {connect} from "react-redux";
+import Navigation from "./components/Navigation/Navigation";
 
-function App() {
+function App(props) {
     return (
         <div className="main_wrap">
-            <div className="header_wrap">
-            <div className="header">
-                <a href="" className="header_logo">
-                    <span className="header_logo_text">Realestate Company</span>
-                    <span className="header_logo_smallText">Lorem Ipsum is simply dummy text</span>
-                </a>
-                <div className="header_phone">
-                    <span>Call us: (214) 227-7669</span>
-                </div>
-            </div>
-            </div>
+            <Header headerPhone={props.headerPhone}/>
+            <Navigation/>
+
         </div>
     );
 }
+const mapStateToProps = (state) => {
+    return {
+        headerPhone: state.headerPhone,
+    }
+}
 
-export default App;
+export default connect (mapStateToProps, null)(App)
